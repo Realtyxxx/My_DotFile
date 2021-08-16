@@ -33,7 +33,7 @@ set textwidth=80
 set colorcolumn=+1
 set ww=<,>,h,l
 set noeb visualbell
-let mapleader = ","
+let mapleader = "\<space>"
 
 filetype on
 filetype plugin on
@@ -114,6 +114,13 @@ let l = l + 1 | call setline(l,'using namespace std;')
 let l = l + 1 | call setline(l,'')
 endfunc
 
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+noremap <leader>w :w<CR>
+noremap <leader>q :!q<CR>
+inoremap jj <esc>
+
 " Nerd Tree
 let NERDChristmasTree=0
 let NERDTreeWinSize=40
@@ -121,7 +128,7 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos="left"
-autocmd vimenter * if !argc() | NERDTree | endif 
+autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
