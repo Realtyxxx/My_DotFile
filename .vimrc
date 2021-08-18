@@ -8,7 +8,9 @@ set showcmd
 set laststatus=1
 set magic
 set cursorline
-set mouse=a
+if $TERM !="linux"
+   set mouse=a
+endif
 set go=
 set showmatch
 set matchtime=1
@@ -29,7 +31,7 @@ set backspace=indent,eol,start
 set wildmenu
 set fo=cqrt
 set laststatus=2
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 set ww=<,>,h,l
 set noeb visualbell
@@ -68,21 +70,22 @@ func! RG()
     exec "! ./%<"
 endfunc
 
-map <F9> :call ClangFormat()<CR>
-func! ClangFormat()
-    exec "w"
-    exec "!clang-format  -i  % "
-endfunc
+"map <F9> :call ClangFormat()<CR>
+"func! ClangFormat()
+"    exec "w"
+"    exec "!clang-format  -i  % "
+"endfunc
 
-map <F2> :call SetTitle()<CR>
+map <f2> :call SetTitle()<CR>
 func SetTitle()
 let l = 0
-let l = l + 1 | call setline(l,'/******************************')
-let l = l + 1 | call setline(l,' *File name: '.expand("%"))
-let l = l + 1 | call setline(l,' *Author: Realtyxxx')
-let l = l + 1 | call setline(l,' *Created Time: '.strftime("%c"))
-let l = l + 1 | call setline(l,' *TODO:')
-let l = l + 1 | call setline(l,'******************************/')
+let l = l + 1 | call setline(l,'/*')
+let l = l + 1 | call setline(l,' @File name   : '.expand("%"))
+let l = l + 1 | call setline(l,' @File name   : '.expand("%"))
+let l = l + 1 | call setline(l,' @Author      : Realtyxxx')
+let l = l + 1 | call setline(l,' @Created Time: '.strftime("%c"))
+let l = l + 1 | call setline(l,' @TODO        :')
+let l = l + 1 | call setline(l,'*/')
 let l = l + 1 | call setline(l,'')
 let l = l + 1 | call setline(l,'#include <cstdio>')
 let l = l + 1 | call setline(l,'#include <cstring>')
@@ -114,12 +117,17 @@ let l = l + 1 | call setline(l,'using namespace std;')
 let l = l + 1 | call setline(l,'')
 endfunc
 
+nnoremap <Ctrl>w dB
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>w :w<CR>
-noremap <leader>q :!q<CR>
+noremap <leader>q :q!<CR>
 inoremap jj <esc>
+
+noremap <leader>b :ls<CR>
+noremap <leader>n :bn<CR>
+noremap <leader>p :bp<CR>
 
 " Nerd Tree
 let NERDChristmasTree=0
@@ -141,7 +149,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
-nmap <F6> :NERDTreeToggle<CR>
+nmap ff :NERDTreeToggle<CR>
 
 " Tagbar
 let g:tagbar_width=35
@@ -150,11 +158,46 @@ nmap <F7> :TagbarToggle<CR>
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_server_python_interpreter='/opt/anaconda3/bin/python'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>
+let g:ycm_server_python_interpreter='/usr/local/bin/python3'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 
-"plugin 'Raimondi/delimitMate'
+"Plugin 'Chiel92/vim-autoformat'
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+noremap <F9> :Autoformat<CR>
+let g:autoformat_verbosemode=1
 
-Plugin 'vim-jp/vim-cpp'
+
+"Plugin 'preservim/nerdcommenter'
+"map <C-m> <leader>cc
+"map <A-m> <leader>cu
+"unmap <CR>
+map cc <leader>c<space>
+"切换所选行的注释状态。如果最上面的一行被注释，所有被选中的行都会被取消注释，反之亦然。
+map cs <leader>cs
+"用一个漂亮的块状格式的布局来注释所选的行。
+map ca <leader>ca
+"将注释定界符添加到行尾，并在它们之间进入插入模式。
+
+"Plugin 'vim-scripts/DoxygenToolkit.vim'
+
+"vim-cpp-enhanced-highlight
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+
+
+"clipboard
+set clipboard=unnamed
