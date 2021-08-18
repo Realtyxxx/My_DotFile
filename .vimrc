@@ -159,12 +159,12 @@ nmap <F7> :TagbarToggle<CR>
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+let g:ycm_server_python_interpreter='/usr/local/bin/python3'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
-let g:ycm_server_python_interpreter='/usr/local/bin/python3'
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 
 "Plugin 'Chiel92/vim-autoformat'
@@ -183,7 +183,7 @@ map cc <leader>c<space>
 "切换所选行的注释状态。如果最上面的一行被注释，所有被选中的行都会被取消注释，反之亦然。
 map cs <leader>cs
 "用一个漂亮的块状格式的布局来注释所选的行。
-map ca <leader>ca
+map ca <leader>cA
 "将注释定界符添加到行尾，并在它们之间进入插入模式。
 
 "Plugin 'vim-scripts/DoxygenToolkit.vim'
