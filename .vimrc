@@ -81,7 +81,6 @@ func SetTitle()
 let l = 0
 let l = l + 1 | call setline(l,'/*')
 let l = l + 1 | call setline(l,' @File name   : '.expand("%"))
-let l = l + 1 | call setline(l,' @File name   : '.expand("%"))
 let l = l + 1 | call setline(l,' @Author      : Realtyxxx')
 let l = l + 1 | call setline(l,' @Created Time: '.strftime("%c"))
 let l = l + 1 | call setline(l,' @TODO        :')
