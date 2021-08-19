@@ -59,15 +59,15 @@ set fileencoding=utf-8
 map <F5> :call CR()<CR>
 func! CR()
     exec "w"
-    exec "!g++ % -o %<"
-    exec "! ./%<"
+    exec "!g++ % -o %<.out"
+    exec "! ./%<.out"
 endfunc
 
 map <F10> :call RG()<CR>
 func! RG()
     exec "w"
-    exec "!g++ -std=c++11 % -g -o %<"
-    exec "! ./%<"
+    exec "!g++ -std=c++11 % -g -o %<.out"
+    exec "! ./%<.out"
 endfunc
 
 "map <F9> :call ClangFormat()<CR>
@@ -116,7 +116,7 @@ let l = l + 1 | call setline(l,'using namespace std;')
 let l = l + 1 | call setline(l,'')
 endfunc
 
-nnoremap <Ctrl>w dB
+inoremap <Ctrl>w dB
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -127,6 +127,7 @@ inoremap jj <esc>
 noremap <leader>b :ls<CR>
 noremap <leader>n :bn<CR>
 noremap <leader>p :bp<CR>
+"noremap <C-w> dbx
 
 " Nerd Tree
 let NERDChristmasTree=0
