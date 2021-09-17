@@ -3,6 +3,7 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+colorscheme molokai
 set nu
 set showcmd
 set laststatus=1
@@ -51,22 +52,22 @@ set fileencodings=ucs-bom,utf-8,cp936
 set fileencoding=utf-8
 
 " Molokai
-"colorscheme molokai
-"highlight NonText guibg=#060606
-"highlight Folded  guibg=#0A0A0A guifg=#9090D0
+colorscheme molokai
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " some map
 map <F5> :call CR()<CR>
 func! CR()
     exec "w"
-    exec "!g++ % -o %<.out"
+    exec "!g++ -std=c++17 % -o %<.out"
     exec "! ./%<.out"
 endfunc
 
 map <F10> :call RG()<CR>
 func! RG()
     exec "w"
-    exec "!g++ -std=c++11 % -g -o %<.out"
+    exec "!g++ -std=c++17 % -g -o %<.out"
     exec "! ./%<.out"
 endfunc
 
@@ -86,48 +87,47 @@ let l = l + 1 | call setline(l,' @Created Time: '.strftime("%c"))
 let l = l + 1 | call setline(l,' @TODO        :')
 let l = l + 1 | call setline(l,'*/')
 let l = l + 1 | call setline(l,'')
-let l = l + 1 | call setline(l,'#include <cstdio>')
-let l = l + 1 | call setline(l,'#include <cstring>')
-let l = l + 1 | call setline(l,'#include <cstdlib>')
-let l = l + 1 | call setline(l,'#include <iostream>')
-let l = l + 1 | call setline(l,'#include <string>')
-let l = l + 1 | call setline(l,'#include <algorithm>')
-let l = l + 1 | call setline(l,'#include <vector>')
-let l = l + 1 | call setline(l,'#include <queue>')
-let l = l + 1 | call setline(l,'#include <set>')
-let l = l + 1 | call setline(l,'#include <map>')
-let l = l + 1 | call setline(l,'')
-let l = l + 1 | call setline(l,'using namespace std;')
-let l = l + 1 | call setline(l,'')
+"let l = l + 1 | call setline(l,'#include <cstdio>')
+"let l = l + 1 | call setline(l,'#include <cstring>')
+"let l = l + 1 | call setline(l,'#include <cstdlib>')
+"let l = l + 1 | call setline(l,'#include <iostream>')
+"let l = l + 1 | call setline(l,'#include <string>')
+"let l = l + 1 | call setline(l,'#include <algorithm>')
+"let l = l + 1 | call setline(l,'#include <vector>')
+"let l = l + 1 | call setline(l,'#include <queue>')
+"let l = l + 1 | call setline(l,'#include <set>')
+"let l = l + 1 | call setline(l,'#include <map>')
+"let l = l + 1 | call setline(l,'')
+"let l = l + 1 | call setline(l,'using namespace std;')
+"let l = l + 1 | call setline(l,'')
 endfunc
 
-map <F3> :call SetTitle2()<CR>
-func SetTitle2()
-let l = 0
-let l = l + 1 | call setline(l,'/******************************')
-let l = l + 1 | call setline(l,' *File name: '.expand("%"))
-let l = l + 1 | call setline(l,' *Author: Realtyxxx')
-let l = l + 1 | call setline(l,' *Created Time: '.strftime("%c"))
-let l = l + 1 | call setline(l,' *TODO:')
-let l = l + 1 | call setline(l,'******************************/')
-let l = l + 1 | call setline(l,'')
-let l = l + 1 | call setline(l,'#include <bits/stdc++.h>')
-let l = l + 1 | call setline(l,'using namespace std;')
-let l = l + 1 | call setline(l,'')
-endfunc
+"map <F3> :call SetTitle2()<CR>
+"func SetTitle2()
+"let l = 0
+"let l = l + 1 | call setline(l,'/******************************')
+"let l = l + 1 | call setline(l,' *File name: '.expand("%"))
+"let l = l + 1 | call setline(l,' *Author: Realtyxxx')
+"let l = l + 1 | call setline(l,' *Created Time: '.strftime("%c"))
+"let l = l + 1 | call setline(l,' *TODO:')
+"let l = l + 1 | call setline(l,'******************************/')
+"let l = l + 1 | call setline(l,'')
+"let l = l + 1 | call setline(l,'#include <bits/stdc++.h>')
+"let l = l + 1 | call setline(l,'using namespace std;')
+"let l = l + 1 | call setline(l,'')
+"endfunc
 
-inoremap <Ctrl>w dB
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 noremap <leader>w :w<CR>
 noremap <leader>q :q!<CR>
 inoremap jj <esc>
+inoremap <Ctrl>w db
 
 noremap <leader>b :ls<CR>
 noremap <leader>n :bn<CR>
 noremap <leader>p :bp<CR>
-"noremap <C-w> dbx
 
 " Nerd Tree
 let NERDChristmasTree=0
@@ -153,7 +153,12 @@ nmap ff :NERDTreeToggle<CR>
 
 " Tagbar
 let g:tagbar_width=35
-let g:tagbar_autofocus=1
+let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
+let g:tagbar_ctags_bin = 'ctags'                       "tagbar以来ctags插件
+let g:tagbar_left = 0                                          "让tagbar在页面左侧显示，默认右边
+let g:tagbar_width = 30                                     "设置tagbar的宽度为30列，默认40
+let g:tagbar_autofocus = 1                                "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
+let g:tagbar_sort = 0                                         "设置标签不排序，默认排序
 nmap <F7> :TagbarToggle<CR>
 
 " YouCompleteMe
@@ -186,6 +191,8 @@ map cs <leader>cs
 "用一个漂亮的块状格式的布局来注释所选的行。
 map ca <leader>cA
 "将注释定界符添加到行尾，并在它们之间进入插入模式。
+" Add your own custom formats or override the defaults
+"let g:NERDCustomDelimiters = { 'cpp': { 'left': '/*','right': '*/' } }
 
 "Plugin 'vim-scripts/DoxygenToolkit.vim'
 
@@ -200,4 +207,4 @@ let g:cpp_concepts_highlight = 1
 
 
 "clipboard
-set clipboard=unnamed
+"set clipboard=unnamed
