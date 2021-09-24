@@ -7,6 +7,12 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 " Define bundles via Github repos
+
+"Bundle 'sickill/vim-monokai'               
+Bundle 'vim-airline/vim-airline'           
+Bundle 'vim-airline/vim-airline-themes'
+Bundle 'plasticboy/vim-markdown'          
+Bundle 'vim-scripts/a.vim'
 Bundle 'christoomey/vim-run-interactive'
 Bundle 'ycm-core/YouCompleteMe'
 Bundle 'croaky/vim-colors-github'
@@ -47,6 +53,7 @@ Bundle "vim-jp/vim-cpp"
 Bundle "octol/vim-cpp-enhanced-highlight"
 Bundle "Chiel92/vim-autoformat"
 Bundle 'preservim/nerdcommenter'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
