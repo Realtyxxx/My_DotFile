@@ -17,7 +17,7 @@ call plug#begin('~/.config/vim_plug/plugged')
     " Plug 'morhetz/gruvbox'
 call plug#end()
 
-"æˆ‘è‡ªå·±çš„ä¹ æƒ¯è®¾ç½®
+"ÎÒ×Ô¼ºµÄÏ°¹ßÉèÖÃ
 let mapleader=','
 noremap <leader>w :w!<CR>
 noremap <leader>q :q!<CR>
@@ -25,34 +25,34 @@ noremap <leader>ev :vs ~/.config/nvim/init.vim<CR>
 noremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 
 filetype plugin on
-" è®¾ç½®ä¸ºåŒå­—å®½æ˜¾ç¤º(ä¼šå½±å“ç•Œé¢æ¸²æŸ“ï¼Œæ‰€ä»¥å…³æ‰)
+" ÉèÖÃÎªË«×Ö¿íÏÔÊ¾(»áÓ°Ïì½çÃæäÖÈ¾£¬ËùÒÔ¹Øµô)
 " set ambiwidth=double
-" é˜²æ­¢vimèƒŒæ™¯é¢œè‰²é”™è¯¯(ç°åœ¨æ²¡æœ‰è¿™ä¸ªé—®é¢˜)
+" ·ÀÖ¹vim±³¾°ÑÕÉ«´íÎó(ÏÖÔÚÃ»ÓĞÕâ¸öÎÊÌâ)
 " set t_ut=
-" é«˜äº®åŒ¹é…æ‹¬å·
+" ¸ßÁÁÆ¥ÅäÀ¨ºÅ
 set showmatch
-" åŒ¹é…æ‹¬å·æ˜¾ç¤ºæ—¶é—´
+" Æ¥ÅäÀ¨ºÅÏÔÊ¾Ê±¼ä
 set matchtime=1
-" ä¸å ç”¨æœ€åçš„ä¸€ä¸ªcmdæ¡†æ˜¾ç¤ºç°åœ¨çš„æ¨¡å¼
+" ²»Õ¼ÓÃ×îºóµÄÒ»¸öcmd¿òÏÔÊ¾ÏÖÔÚµÄÄ£Ê½
 set noshowmode
-" å–æ¶ˆè­¦å‘Šå£°éŸ³
+" È¡Ïû¾¯¸æÉùÒô
 set novisualbell
 set noerrorbells
 set report=0
-" æœç´¢ä¸åŒºåˆ†å¤§å°å†™
+" ËÑË÷²»Çø·Ö´óĞ¡Ğ´
 set ignorecase
 set nobackup
 set autoread
 set nocompatible
-set backspace=2 "èƒ½ä½¿ç”¨backspaceå›åˆ 
+set backspace=2 "ÄÜÊ¹ÓÃbackspace»ØÉ¾
 set showcmd
 set hlsearch
-syntax on "è¯­æ³•æ£€æµ‹
+syntax on "Óï·¨¼ì²â
 
 " Tab settings
 set ts=2
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " indent method
@@ -64,7 +64,7 @@ set smartindent
 " set selection=exclusive
 " set selectmode=mouse,key
 
-set history=1000 "è®¾ç½®å†å²è®°å½•æ¡æ•°
+set history=1000 "ÉèÖÃÀúÊ·¼ÇÂ¼ÌõÊı
 " close welcome page
 set shortmess=atI
 set clipboard+=unnamed
@@ -83,8 +83,8 @@ set cursorline
 
 " reset cursor when vim exits
 " au VimLeave * set guicursor=a:ver25-blinkon0
-set foldmethod=indent " è®¾ç½®é»˜è®¤æŠ˜å æ–¹å¼ä¸ºç¼©è¿›
-set foldlevelstart=99 " æ¯æ¬¡æ‰“å¼€æ–‡ä»¶æ—¶å…³é—­æŠ˜å 
+set foldmethod=indent " ÉèÖÃÄ¬ÈÏÕÛµş·½Ê½ÎªËõ½ø
+set foldlevelstart=99 " Ã¿´Î´ò¿ªÎÄ¼şÊ±¹Ø±ÕÕÛµş
 
 " coc.nvim settings
 set hidden
@@ -115,35 +115,35 @@ if has("autocmd")
 endif
 
 let g:python_highlight_all = 1
-" +================================ å¯è§†åŒ–ç¼©è¿› =====================================+ "
+" +================================ ¿ÉÊÓ»¯Ëõ½ø =====================================+ "
 
-let g:indent_guides_enable_on_vim_startup = 0  " é»˜è®¤å…³é—­
-let g:indent_guides_guide_size            = 1  " æŒ‡å®šå¯¹é½çº¿çš„å°ºå¯¸
-let g:indent_guides_start_level           = 2  " ä»ç¬¬äºŒå±‚å¼€å§‹å¯è§†åŒ–æ˜¾ç¤ºç¼©è¿›
+let g:indent_guides_enable_on_vim_startup = 0  " Ä¬ÈÏ¹Ø±Õ
+let g:indent_guides_guide_size            = 1  " Ö¸¶¨¶ÔÆëÏßµÄ³ß´ç
+let g:indent_guides_start_level           = 2  " ´ÓµÚ¶ş²ã¿ªÊ¼¿ÉÊÓ»¯ÏÔÊ¾Ëõ½ø
 au FileType json let g:indentLine_setConceal = 0 " set default conceal for json
 
 " +================================== NERDTree =======================================+ "
-" autocmd vimenter * NERDTree  "è‡ªåŠ¨å¼€å¯Nerdtree
-let g:NERDTreeWinSize = 35 "è®¾å®š NERDTree è§†çª—å¤§å°
-let NERDTreeShowBookmarks=1  " å¼€å¯Nerdtreeæ—¶è‡ªåŠ¨æ˜¾ç¤ºBookmarks
-"æ‰“å¼€vimæ—¶å¦‚æœæ²¡æœ‰æ–‡ä»¶è‡ªåŠ¨æ‰“å¼€NERDTree
+" autocmd vimenter * NERDTree  "×Ô¶¯¿ªÆôNerdtree
+let g:NERDTreeWinSize = 35 "Éè¶¨ NERDTree ÊÓ´°´óĞ¡
+let NERDTreeShowBookmarks=1  " ¿ªÆôNerdtreeÊ±×Ô¶¯ÏÔÊ¾Bookmarks
+"´ò¿ªvimÊ±Èç¹ûÃ»ÓĞÎÄ¼ş×Ô¶¯´ò¿ªNERDTree
 " autocmd vimenter * if !argc()|NERDTree|endif
-"å½“NERDTreeä¸ºå‰©ä¸‹çš„å”¯ä¸€çª—å£æ—¶è‡ªåŠ¨å…³é—­
+"µ±NERDTreeÎªÊ£ÏÂµÄÎ¨Ò»´°¿ÚÊ±×Ô¶¯¹Ø±Õ
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" è®¾ç½®æ ‘çš„æ˜¾ç¤ºå›¾æ ‡
+" ÉèÖÃÊ÷µÄÏÔÊ¾Í¼±ê
 " let g:NERDTreeDirArrowExpandable = '+'
 " let g:NERDTreeDirArrowCollapsible = '-'
-let NERDTreeIgnore = ['\.pyc$']  " è¿‡æ»¤æ‰€æœ‰.pycæ–‡ä»¶ä¸æ˜¾ç¤º
-let g:NERDTreeShowLineNumbers=0 " æ˜¯å¦æ˜¾ç¤ºè¡Œå·
-let g:NERDTreeHidden=0     "ä¸æ˜¾ç¤ºéšè—æ–‡ä»¶
+let NERDTreeIgnore = ['\.pyc$']  " ¹ıÂËËùÓĞ.pycÎÄ¼ş²»ÏÔÊ¾
+let g:NERDTreeShowLineNumbers=0 " ÊÇ·ñÏÔÊ¾ĞĞºÅ
+let g:NERDTreeHidden=0     "²»ÏÔÊ¾Òş²ØÎÄ¼ş
 ""Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 " autocmd vimenter *  NERDTreeToggle
 
-" +================================== æŒ‰é”®æ˜ å°„ =======================================+ "
+" +================================== °´¼üÓ³Éä =======================================+ "
 " self key map:
 " <leader>s : open key
 " <leader>d : close key
@@ -280,6 +280,7 @@ else
   let s:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
 call coc#config('python', {'pythonPath': s:current_python_path})
+
 " +=================================== tagbar =======================================+ "
 
 let g:tagbar_width=30
@@ -362,8 +363,71 @@ let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
 map cc <leader>c<space>
-"åˆ‡æ¢æ‰€é€‰è¡Œçš„æ³¨é‡ŠçŠ¶æ€ã€‚å¦‚æœæœ€ä¸Šé¢çš„ä¸€è¡Œè¢«æ³¨é‡Šï¼Œæ‰€æœ‰è¢«é€‰ä¸­çš„è¡Œéƒ½ä¼šè¢«å–æ¶ˆæ³¨é‡Šï¼Œåä¹‹äº¦ç„¶ã€‚
+"ÇĞ»»ËùÑ¡ĞĞµÄ×¢ÊÍ×´Ì¬¡£Èç¹û×îÉÏÃæµÄÒ»ĞĞ±»×¢ÊÍ£¬ËùÓĞ±»Ñ¡ÖĞµÄĞĞ¶¼»á±»È¡Ïû×¢ÊÍ£¬·´Ö®ÒàÈ»¡£
 map cs <leader>cs
-"ç”¨ä¸€ä¸ªæ¼‚äº®çš„å—çŠ¶æ ¼å¼çš„å¸ƒå±€æ¥æ³¨é‡Šæ‰€é€‰çš„è¡Œã€‚
+"ÓÃÒ»¸öÆ¯ÁÁµÄ¿é×´¸ñÊ½µÄ²¼¾ÖÀ´×¢ÊÍËùÑ¡µÄĞĞ¡£
 map ca <leader>cA
-"å°†æ³¨é‡Šå®šç•Œç¬¦æ·»åŠ åˆ°è¡Œå°¾ï¼Œå¹¶åœ¨å®ƒä»¬ä¹‹é—´è¿›å…¥æ’å…¥æ¨¡å¼ã€‚
+"½«×¢ÊÍ¶¨½ç·ûÌí¼Óµ½ĞĞÎ²£¬²¢ÔÚËüÃÇÖ®¼ä½øÈë²åÈëÄ£Ê½¡£
+
+" some map
+map <F5> :call CR()<CR>
+func! CR()
+    exec "w"
+    exec "!g++ -std=c++17 % -o %<.out"
+    exec "! ./%<.out"
+endfunc
+
+map <F10> :call RG()<CR>
+func! RG()
+    exec "w"
+    exec "!g++ -std=c++17 % -g -o %<.out"
+    exec "! ./%<.out"
+endfunc
+
+"map <F9> :call ClangFormat()<CR>
+"func! ClangFormat()
+"    exec "w"
+"    exec "!clang-format  -i  % "
+"endfunc
+
+map <f2> :call SetTitle()<CR>
+func SetTitle()
+let l = 0
+let l = l + 1 | call setline(l,'/*')
+let l = l + 1 | call setline(l,' @File name   : '.expand("%"))
+let l = l + 1 | call setline(l,' @Author      : Realtyxxx')
+let l = l + 1 | call setline(l,' @Created Time: '.strftime("%c"))
+let l = l + 1 | call setline(l,' @TODO        :')
+let l = l + 1 | call setline(l,'*/')
+let l = l + 1 | call setline(l,'')
+let l = l + 1 | call setline(l,'#include <cstdio>')
+let l = l + 1 | call setline(l,'#include <cstring>')
+let l = l + 1 | call setline(l,'#include <cstdlib>')
+let l = l + 1 | call setline(l,'#include <iostream>')
+let l = l + 1 | call setline(l,'#include <string>')
+let l = l + 1 | call setline(l,'#include <algorithm>')
+let l = l + 1 | call setline(l,'#include <vector>')
+let l = l + 1 | call setline(l,'#include <queue>')
+let l = l + 1 | call setline(l,'#include <set>')
+let l = l + 1 | call setline(l,'#include <map>')
+let l = l + 1 | call setline(l,'')
+let l = l + 1 | call setline(l,'using namespace std;')
+let l = l + 1 | call setline(l,'')
+endfunc
+
+map <F3> :call SetTitle2()<CR>
+func SetTitle2()
+let l = 0
+let l = l + 1 | call setline(l,'/******************************')
+let l = l + 1 | call setline(l,' *File name: '.expand("%"))
+let l = l + 1 | call setline(l,' *Author: Realtyxxx')
+let l = l + 1 | call setline(l,' *Created Time: '.strftime("%c"))
+let l = l + 1 | call setline(l,' *TODO:')
+let l = l + 1 | call setline(l,'******************************/')
+let l = l + 1 | call setline(l,'')
+let l = l + 1 | call setline(l,'#include <bits/stdc++.h>')
+let l = l + 1 | call setline(l,'using namespace std;')
+let l = l + 1 | call setline(l,'')
+endfunc
+
+
