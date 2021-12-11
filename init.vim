@@ -14,40 +14,72 @@ call plug#begin('~/.config/vim_plug/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'majutsushi/tagbar'
+    Plug 'Chiel92/vim-autoformat'
+    Plug 'buoto/gotests-vim'
+    Plug 'fatih/vim-go', {'do':':GoUpdateBinaries'}
+    Plug 'mhinz/vim-startify'
+    
+    " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
     " Plug 'morhetz/gruvbox'
 call plug#end()
 
-"ÎÒ×Ô¼ºµÄÏ°¹ßÉèÖÃ
+"æˆ‘è‡ªå·±çš„ä¹ æƒ¯è®¾ç½®
 let mapleader=','
-noremap <leader>w :w!<CR>
+inoremap <silent> jj <Esc>`^
+inoremap <leader>w <Esc>:w<cr>
+noremap <leader>w :set fenc= <CR> :w!<CR>
 noremap <leader>q :q!<CR>
-noremap <leader>ev :vs ~/.config/nvim/init.vim<CR>
+noremap <leader>ev :vsp ~/.config/nvim/init.vim<CR>
 noremap <leader>sv :source ~/.config/nvim/init.vim<CR>
+noremap <leader>n :bn<CR>
+noremap <leader>p :bp<CR>
+
+" inoremap {{      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap ((      ()<Left>
+" inoremap (<CR>  (<CR>)<Esc>O
+" inoremap [[      []<Left>
+" inoremap [<CR>  [<CR>]<Esc>O
+
+nnoremap <C-s> :term<CR>
+
 
 filetype plugin on
-" ÉèÖÃÎªË«×Ö¿íÏÔÊ¾(»áÓ°Ïì½çÃæäÖÈ¾£¬ËùÒÔ¹Øµô)
+" è®¾ç½®ä¸ºåŒå­—å®½æ˜¾ç¤º(ä¼šå½±å“ç•Œé¢æ¸²æŸ“ï¼Œæ‰€ä»¥å…³æ‰)
 " set ambiwidth=double
-" ·ÀÖ¹vim±³¾°ÑÕÉ«´íÎó(ÏÖÔÚÃ»ÓĞÕâ¸öÎÊÌâ)
+" é˜²æ­¢vimèƒŒæ™¯é¢œè‰²é”™è¯¯(ç°åœ¨æ²¡æœ‰è¿™ä¸ªé—®é¢˜)
 " set t_ut=
-" ¸ßÁÁÆ¥ÅäÀ¨ºÅ
+
+set viewoptions=cursor,folds,slash,unix
+set splitbelow
+set splitright
+set virtualedit=block
+set re=0
+set tw=0
+set list
+
+
+
+" é«˜äº®åŒ¹é…æ‹¬å·
 set showmatch
-" Æ¥ÅäÀ¨ºÅÏÔÊ¾Ê±¼ä
+" åŒ¹é…æ‹¬å·æ˜¾ç¤ºæ—¶é—´
 set matchtime=1
-" ²»Õ¼ÓÃ×îºóµÄÒ»¸öcmd¿òÏÔÊ¾ÏÖÔÚµÄÄ£Ê½
+" ä¸å ç”¨æœ€åçš„ä¸€ä¸ªcmdæ¡†æ˜¾ç¤ºç°åœ¨çš„æ¨¡å¼
 set noshowmode
-" È¡Ïû¾¯¸æÉùÒô
+" å–æ¶ˆè­¦å‘Šå£°éŸ³
 set novisualbell
 set noerrorbells
 set report=0
-" ËÑË÷²»Çø·Ö´óĞ¡Ğ´
+" æœç´¢ä¸åŒºåˆ†å¤§å°å†™
 set ignorecase
 set nobackup
 set autoread
 set nocompatible
-set backspace=2 "ÄÜÊ¹ÓÃbackspace»ØÉ¾
+set backspace=2 "èƒ½ä½¿ç”¨backspaceå›åˆ 
 set showcmd
 set hlsearch
-syntax on "Óï·¨¼ì²â
+
+syntax on "è¯­æ³•æ£€æµ‹
 
 " Tab settings
 set ts=2
@@ -64,7 +96,7 @@ set smartindent
 " set selection=exclusive
 " set selectmode=mouse,key
 
-set history=1000 "ÉèÖÃÀúÊ·¼ÇÂ¼ÌõÊı
+set history=9000 "è®¾ç½®å†å²è®°å½•æ¡æ•°
 " close welcome page
 set shortmess=atI
 set clipboard+=unnamed
@@ -83,8 +115,8 @@ set cursorline
 
 " reset cursor when vim exits
 " au VimLeave * set guicursor=a:ver25-blinkon0
-set foldmethod=indent " ÉèÖÃÄ¬ÈÏÕÛµş·½Ê½ÎªËõ½ø
-set foldlevelstart=99 " Ã¿´Î´ò¿ªÎÄ¼şÊ±¹Ø±ÕÕÛµş
+set foldmethod=indent " è®¾ç½®é»˜è®¤æŠ˜å æ–¹å¼ä¸ºç¼©è¿›
+set foldlevelstart=99 " æ¯æ¬¡æ‰“å¼€æ–‡ä»¶æ—¶å…³é—­æŠ˜å 
 
 " coc.nvim settings
 set hidden
@@ -108,42 +140,57 @@ let g:airline_theme = 'gruvbox_material'
 let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
 
-
+hi Normal ctermfg=252 ctermbg=none "èƒŒæ™¯é€æ˜
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 let g:python_highlight_all = 1
-" +================================ ¿ÉÊÓ»¯Ëõ½ø =====================================+ "
+" +================================ å¯è§†åŒ–ç¼©è¿› =====================================+ "
 
-let g:indent_guides_enable_on_vim_startup = 0  " Ä¬ÈÏ¹Ø±Õ
-let g:indent_guides_guide_size            = 1  " Ö¸¶¨¶ÔÆëÏßµÄ³ß´ç
-let g:indent_guides_start_level           = 2  " ´ÓµÚ¶ş²ã¿ªÊ¼¿ÉÊÓ»¯ÏÔÊ¾Ëõ½ø
+let g:indent_guides_enable_on_vim_startup = 0  " é»˜è®¤å…³é—­
+let g:indent_guides_guide_size            = 1  " æŒ‡å®šå¯¹é½çº¿çš„å°ºå¯¸
+let g:indent_guides_start_level           = 2  " ä»ç¬¬äºŒå±‚å¼€å§‹å¯è§†åŒ–æ˜¾ç¤ºç¼©è¿›
 au FileType json let g:indentLine_setConceal = 0 " set default conceal for json
 
 " +================================== NERDTree =======================================+ "
-" autocmd vimenter * NERDTree  "×Ô¶¯¿ªÆôNerdtree
-let g:NERDTreeWinSize = 35 "Éè¶¨ NERDTree ÊÓ´°´óĞ¡
-let NERDTreeShowBookmarks=1  " ¿ªÆôNerdtreeÊ±×Ô¶¯ÏÔÊ¾Bookmarks
-"´ò¿ªvimÊ±Èç¹ûÃ»ÓĞÎÄ¼ş×Ô¶¯´ò¿ªNERDTree
+" autocmd vimenter * NERDTree  "è‡ªåŠ¨å¼€å¯Nerdtree
+let NERDChristmasTree=1
+let NERDTreeWinSize=50
+let NERDTreeChDirMode=2
+let g:NERDTreeWinSize = 35 "è®¾å®š NERDTree è§†çª—å¤§å°
+let NERDTreeShowBookmarks=1  " å¼€å¯Nerdtreeæ—¶è‡ªåŠ¨æ˜¾ç¤ºBookmarks
+"æ‰“å¼€vimæ—¶å¦‚æœæ²¡æœ‰æ–‡ä»¶è‡ªåŠ¨æ‰“å¼€NERDTree
 " autocmd vimenter * if !argc()|NERDTree|endif
-"µ±NERDTreeÎªÊ£ÏÂµÄÎ¨Ò»´°¿ÚÊ±×Ô¶¯¹Ø±Õ
+"å½“NERDTreeä¸ºå‰©ä¸‹çš„å”¯ä¸€çª—å£æ—¶è‡ªåŠ¨å…³é—­
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" ÉèÖÃÊ÷µÄÏÔÊ¾Í¼±ê
+" è®¾ç½®æ ‘çš„æ˜¾ç¤ºå›¾æ ‡
 " let g:NERDTreeDirArrowExpandable = '+'
 " let g:NERDTreeDirArrowCollapsible = '-'
-let NERDTreeIgnore = ['\.pyc$']  " ¹ıÂËËùÓĞ.pycÎÄ¼ş²»ÏÔÊ¾
-let g:NERDTreeShowLineNumbers=0 " ÊÇ·ñÏÔÊ¾ĞĞºÅ
-let g:NERDTreeHidden=0     "²»ÏÔÊ¾Òş²ØÎÄ¼ş
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']  " è¿‡æ»¤æ‰€æœ‰.pycæ–‡ä»¶ä¸æ˜¾ç¤º
+let g:NERDTreeShowLineNumbers=0 " æ˜¯å¦æ˜¾ç¤ºè¡Œå·
+let g:NERDTreeHidden=0     "ä¸æ˜¾ç¤ºéšè—æ–‡ä»¶
 ""Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "ï¿½7ï¿½5",
+    \ "Staged"    : "ï¿½7ï¿½4",
+    \ "Untracked" : "ï¿½7ï¿½3",
+    \ "Renamed"   : "ï¿½7ï¿½4",
+    \ "Unmerged"  : "â•",
+    \ "Deleted"   : "ï¿½7ï¿½0",
+    \ "Dirty"     : "ï¿½7ï¿½1",
+    \ "Clean"     : "ï¿½7ï¿½8ï¿½1ï¿½4",
+    \ "Unknown"   : "?"
+    \ }
+
 " autocmd vimenter *  NERDTreeToggle
 
-" +================================== °´¼üÓ³Éä =======================================+ "
+" +================================== æŒ‰é”®æ˜ å°„ =======================================+ "
 " self key map:
 " <leader>s : open key
 " <leader>d : close key
@@ -164,17 +211,15 @@ nnoremap <leader>dt :match<CR>:noh<CR>
 " close highlight
 nnoremap <leader>dh :noh<CR>
 
-inoremap <silent> jj <Esc>
 inoremap <M-h> <left>
 inoremap <M-j> <down>
 inoremap <M-k> <up>
 inoremap <M-l> <right>
 
 " swap
-vnoremap <C-C> <ESC>`.``gvp``P
+" vnoremap <C-C> <ESC>`.``gvp``P
 
 " plug key map
-nnoremap <silent> <F4> :TagbarToggle<CR>  " tagbar
 nnoremap ff :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR> " nerdtree
 
 
@@ -192,8 +237,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-z> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -282,7 +325,13 @@ endif
 call coc#config('python', {'pythonPath': s:current_python_path})
 
 " +=================================== tagbar =======================================+ "
-
+let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
+let g:tagbar_ctags_bin = 'ctags'                       "tagbarä»¥æ¥ctagsæ’ä»¶
+let g:tagbar_left = 0                                          "è®©tagbaråœ¨é¡µé¢å·¦ä¾§æ˜¾ç¤ºï¼Œé»˜è®¤å³è¾¹
+let g:tagbar_width = 50                                     "è®¾ç½®tagbarçš„å®½åº¦ä¸º30åˆ—ï¼Œé»˜è®¤40
+let g:tagbar_autofocus = 1                                "è¿™æ˜¯tagbarä¸€æ‰“å¼€ï¼Œå…‰æ ‡å³åœ¨tagbaré¡µé¢å†…ï¼Œé»˜è®¤åœ¨vimæ‰“å¼€çš„æ–‡ä»¶å†…
+let g:tagbar_sort = 0                                         "è®¾ç½®æ ‡ç­¾ä¸æ’åºï¼Œé»˜è®¤æ’åº
+nmap <F7> :TagbarToggle<CR>
 let g:tagbar_width=30
 " +================================== airline =======================================+ "
 let g:airline#extensions#tabline#enabled = 1
@@ -363,32 +412,28 @@ let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
 map cc <leader>c<space>
-"ÇĞ»»ËùÑ¡ĞĞµÄ×¢ÊÍ×´Ì¬¡£Èç¹û×îÉÏÃæµÄÒ»ĞĞ±»×¢ÊÍ£¬ËùÓĞ±»Ñ¡ÖĞµÄĞĞ¶¼»á±»È¡Ïû×¢ÊÍ£¬·´Ö®ÒàÈ»¡£
+"åˆ‡æ¢æ‰€é€‰è¡Œçš„æ³¨é‡ŠçŠ¶æ€ã€‚å¦‚æœæœ€ä¸Šé¢çš„ä¸€è¡Œè¢«æ³¨é‡Šï¼Œæ‰€æœ‰è¢«é€‰ä¸­çš„è¡Œéƒ½ä¼šè¢«å–æ¶ˆæ³¨é‡Šï¼Œåä¹‹äº¦ç„¶ã€‚
 map cs <leader>cs
-"ÓÃÒ»¸öÆ¯ÁÁµÄ¿é×´¸ñÊ½µÄ²¼¾ÖÀ´×¢ÊÍËùÑ¡µÄĞĞ¡£
+"ç”¨ä¸€ä¸ªæ¼‚äº®çš„å—çŠ¶æ ¼å¼çš„å¸ƒå±€æ¥æ³¨é‡Šæ‰€é€‰çš„è¡Œã€‚
 map ca <leader>cA
-"½«×¢ÊÍ¶¨½ç·ûÌí¼Óµ½ĞĞÎ²£¬²¢ÔÚËüÃÇÖ®¼ä½øÈë²åÈëÄ£Ê½¡£
+"å°†æ³¨é‡Šå®šç•Œç¬¦æ·»åŠ åˆ°è¡Œå°¾ï¼Œå¹¶åœ¨å®ƒä»¬ä¹‹é—´è¿›å…¥æ’å…¥æ¨¡å¼ã€‚
 
 " some map
 map <F5> :call CR()<CR>
 func! CR()
     exec "w"
-    exec "!g++ -std=c++17 % -o %<.out"
-    exec "! ./%<.out"
+    exec "!clang++ -std=c++17 -Wall -Wextra -Wpedantic % -o %<.out"
+    exec "!./%<.out"
 endfunc
+" -Wall -Wpedantic -Wextra
+" Enable compiler warnings. Highly recommended. These don't really activate all warnings, but rather the most important ones that don't produce too much (false positive) noise.
 
-map <F10> :call RG()<CR>
-func! RG()
-    exec "w"
-    exec "!g++ -std=c++17 % -g -o %<.out"
-    exec "! ./%<.out"
-endfunc
+" map <F10> :call RG()<CR>
+" func! RG()
+"     exec "w"
+"     exec "!clang++ -std=c++17 % -g -o %<.out"
+" endfunc
 
-"map <F9> :call ClangFormat()<CR>
-"func! ClangFormat()
-"    exec "w"
-"    exec "!clang-format  -i  % "
-"endfunc
 
 map <f2> :call SetTitle()<CR>
 func SetTitle()
@@ -429,5 +474,36 @@ let l = l + 1 | call setline(l,'#include <bits/stdc++.h>')
 let l = l + 1 | call setline(l,'using namespace std;')
 let l = l + 1 | call setline(l,'')
 endfunc
+
+" Chiel92/vim-autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+noremap <F9> :Autoformat<CR>
+let g:autoformat_verbosemode=1
+
+"ccls
+let g:ale_cpp_ccls_init_options = {
+\   'cache': {
+\       'directory': '/tmp/ccls-cache'
+\   }
+\ }
+
+
+
+
+" vim-go
+noremap <f10> :GoRun<CR>
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = 'gofmt'
+let g:go_autodetect_gopath = 1
+" let g:go_bin_path = '$GOBIN'
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
 
 

@@ -12,6 +12,7 @@ alias tas='tmux attach-session -t'
 alias tns='tmux new -s'
 alias tml='tmux ls'
 alias tks='tmux kill-server'
+alias n="nvim"
 
 fortune | pokemonsay
 
