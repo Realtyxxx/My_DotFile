@@ -1,7 +1,6 @@
 #export PATH=/Users/realtyxxx_mac/bin:$PATH
 
 #agents
-export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1086
 
 
 #alias
@@ -12,8 +11,13 @@ alias tas='tmux attach-session -t'
 alias tns='tmux new -s'
 alias tml='tmux ls'
 alias tks='tmux kill-server'
+alias n="nvim"
 
-fortune | pokemonsay
+#vim
+# export MYVIMRC=$HOME/realtyxxx/.vimrc
+# export VIMINIT="so $MYVIMRC"
+# export VIMTMP=$HOME/realtyxxx/tmpfs
 
-#tex
-export PATH=/Library/Tex/texbin:$PATH
+
+
+# export MY_HOME=/YHFS/home/huda/fractional
