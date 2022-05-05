@@ -14,17 +14,26 @@ call plug#begin('~/.config/vim_plug/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'majutsushi/tagbar'
+<<<<<<< HEAD
+=======
     Plug 'Chiel92/vim-autoformat'
     Plug 'buoto/gotests-vim'
     Plug 'fatih/vim-go', {'do':':GoUpdateBinaries'}
     Plug 'mhinz/vim-startify'
     
     " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
     " Plug 'morhetz/gruvbox'
 call plug#end()
 
 "我自己的习惯设置
 let mapleader=','
+<<<<<<< HEAD
+noremap <leader>w :w!<CR>
+noremap <leader>q :q!<CR>
+noremap <leader>ev :vs ~/.config/nvim/init.vim<CR>
+noremap <leader>sv :source ~/.config/nvim/init.vim<CR>
+=======
 inoremap <silent> jj <Esc>`^
 inoremap <leader>w <Esc>:w<cr>
 noremap <leader>w :set fenc= <CR> :w!<CR>
@@ -43,12 +52,15 @@ noremap <leader>p :bp<CR>
 
 nnoremap <C-s> :term<CR>
 
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 
 filetype plugin on
 " 设置为双字宽显示(会影响界面渲染，所以关掉)
 " set ambiwidth=double
 " 防止vim背景颜色错误(现在没有这个问题)
 " set t_ut=
+<<<<<<< HEAD
+=======
 
 set viewoptions=cursor,folds,slash,unix
 set splitbelow
@@ -60,6 +72,7 @@ set list
 
 
 
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " 高亮匹配括号
 set showmatch
 " 匹配括号显示时间
@@ -78,13 +91,21 @@ set nocompatible
 set backspace=2 "能使用backspace回删
 set showcmd
 set hlsearch
+<<<<<<< HEAD
+=======
 
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 syntax on "语法检测
 
 " Tab settings
 set ts=2
+<<<<<<< HEAD
+set softtabstop=4
+set shiftwidth=4
+=======
 set softtabstop=2
 set shiftwidth=2
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 set expandtab
 
 " indent method
@@ -96,7 +117,11 @@ set smartindent
 " set selection=exclusive
 " set selectmode=mouse,key
 
+<<<<<<< HEAD
+set history=1000 "设置历史记录条数
+=======
 set history=9000 "设置历史记录条数
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " close welcome page
 set shortmess=atI
 set clipboard+=unnamed
@@ -140,7 +165,11 @@ let g:airline_theme = 'gruvbox_material'
 let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
 
+<<<<<<< HEAD
+
+=======
 hi Normal ctermfg=252 ctermbg=none "背景透明
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -156,9 +185,12 @@ au FileType json let g:indentLine_setConceal = 0 " set default conceal for json
 
 " +================================== NERDTree =======================================+ "
 " autocmd vimenter * NERDTree  "自动开启Nerdtree
+<<<<<<< HEAD
+=======
 let NERDChristmasTree=1
 let NERDTreeWinSize=50
 let NERDTreeChDirMode=2
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 let g:NERDTreeWinSize = 35 "设定 NERDTree 视窗大小
 let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 "打开vim时如果没有文件自动打开NERDTree
@@ -170,12 +202,18 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " 设置树的显示图标
 " let g:NERDTreeDirArrowExpandable = '+'
 " let g:NERDTreeDirArrowCollapsible = '-'
+<<<<<<< HEAD
+let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
+=======
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']  " 过滤所有.pyc文件不显示
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 let g:NERDTreeShowLineNumbers=0 " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
 ""Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+<<<<<<< HEAD
+=======
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "�7�5",
     \ "Staged"    : "�7�4",
@@ -188,6 +226,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " autocmd vimenter *  NERDTreeToggle
 
 " +================================== 按键映射 =======================================+ "
@@ -211,15 +250,26 @@ nnoremap <leader>dt :match<CR>:noh<CR>
 " close highlight
 nnoremap <leader>dh :noh<CR>
 
+<<<<<<< HEAD
+inoremap <silent> jj <Esc>
+=======
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 inoremap <M-h> <left>
 inoremap <M-j> <down>
 inoremap <M-k> <up>
 inoremap <M-l> <right>
 
 " swap
+<<<<<<< HEAD
+vnoremap <C-C> <ESC>`.``gvp``P
+
+" plug key map
+nnoremap <silent> <F4> :TagbarToggle<CR>  " tagbar
+=======
 " vnoremap <C-C> <ESC>`.``gvp``P
 
 " plug key map
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 nnoremap ff :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR> " nerdtree
 
 
@@ -237,6 +287,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+<<<<<<< HEAD
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-z> coc#refresh()
+=======
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -323,6 +378,10 @@ else
   let s:current_python_path=$CONDA_PREFIX.'/bin/python'
 endif
 call coc#config('python', {'pythonPath': s:current_python_path})
+<<<<<<< HEAD
+" +=================================== tagbar =======================================+ "
+
+=======
 
 " +=================================== tagbar =======================================+ "
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
@@ -332,6 +391,7 @@ let g:tagbar_width = 50                                     "设置tagbar的宽�
 let g:tagbar_autofocus = 1                                "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
 let g:tagbar_sort = 0                                         "设置标签不排序，默认排序
 nmap <F7> :TagbarToggle<CR>
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 let g:tagbar_width=30
 " +================================== airline =======================================+ "
 let g:airline#extensions#tabline#enabled = 1
@@ -410,6 +470,8 @@ let g:NERDToggleCheckAllLines = 1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
+<<<<<<< HEAD
+=======
 
 map cc <leader>c<space>
 "切换所选行的注释状态。如果最上面的一行被注释，所有被选中的行都会被取消注释，反之亦然。
@@ -507,3 +569,4 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
 
+>>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
