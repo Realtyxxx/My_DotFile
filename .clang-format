@@ -9,10 +9,10 @@ AlignEscapedNewlinesLeft: true
 AlignOperands:   true
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: false
+AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: true
-AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: true
 AlwaysBreakAfterDefinitionReturnType: false
 AlwaysBreakAfterReturnType: None
@@ -21,13 +21,13 @@ AlwaysBreakTemplateDeclarations: true
 BinPackArguments: true
 BinPackParameters: true
 BraceWrapping:   
-  AfterClass:      false
+  AfterClass:      true
   AfterControlStatement: false
   AfterEnum:       false
   AfterFunction:   false
   AfterNamespace:  false
   AfterObjCDeclaration: false
-  AfterStruct:     false
+  AfterStruct:     true
   AfterUnion:      false
   BeforeCatch:     false
   BeforeElse:      false
@@ -36,7 +36,8 @@ BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Attach
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false
-ColumnLimit:     80
+BreakInheritanceList: BeforeComma
+ColumnLimit:     120
 CommentPragmas:  '^ IWYU pragma:'
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 4
@@ -46,6 +47,7 @@ DerivePointerAlignment: true
 DisableFormat:   false
 ExperimentalAutoDetectBinPacking: false
 ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+FixNamespaceComments: true
 IncludeCategories: 
   - Regex:           '^<.*\.h>'
     Priority:        1
