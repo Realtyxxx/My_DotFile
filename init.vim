@@ -14,37 +14,31 @@ call plug#begin('~/.config/vim_plug/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'majutsushi/tagbar'
-<<<<<<< HEAD
-=======
     Plug 'Chiel92/vim-autoformat'
     Plug 'buoto/gotests-vim'
     Plug 'fatih/vim-go', {'do':':GoUpdateBinaries'}
     Plug 'mhinz/vim-startify'
-    
-    " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
+    Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'MattesGroeger/vim-bookmarks'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
     " Plug 'morhetz/gruvbox'
 call plug#end()
 
 "我自己的习惯设置
 let mapleader=','
-<<<<<<< HEAD
-noremap <leader>w :w!<CR>
-noremap <leader>q :q!<CR>
-noremap <leader>ev :vs ~/.config/nvim/init.vim<CR>
-noremap <leader>sv :source ~/.config/nvim/init.vim<CR>
-=======
 inoremap <silent> jj <Esc>`^
 inoremap <leader>w <Esc>:w<cr>
-noremap <leader>w :set fenc= <CR> :w!<CR>
+noremap <leader>w :set fenc= <CR>:w!<CR>
 noremap <leader>q :q!<CR>
 noremap <leader>ev :vsp ~/.config/nvim/init.vim<CR>
 noremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 noremap <leader>n :bn<CR>
 noremap <leader>p :bp<CR>
 
-" inoremap {{      {}<Left>
-" inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
 " inoremap ((      ()<Left>
 " inoremap (<CR>  (<CR>)<Esc>O
 " inoremap [[      []<Left>
@@ -52,17 +46,14 @@ noremap <leader>p :bp<CR>
 
 nnoremap <C-s> :term<CR>
 
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 
 filetype plugin on
 " 设置为双字宽显示(会影响界面渲染，所以关掉)
 " set ambiwidth=double
 " 防止vim背景颜色错误(现在没有这个问题)
 " set t_ut=
-<<<<<<< HEAD
-=======
 
-set viewoptions=cursor,folds,slash,unix
+" set viewoptions=cursor,folds,slash,unix
 set splitbelow
 set splitright
 set virtualedit=block
@@ -72,7 +63,6 @@ set list
 
 
 
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " 高亮匹配括号
 set showmatch
 " 匹配括号显示时间
@@ -91,21 +81,13 @@ set nocompatible
 set backspace=2 "能使用backspace回删
 set showcmd
 set hlsearch
-<<<<<<< HEAD
-=======
 
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 syntax on "语法检测
 
 " Tab settings
 set ts=2
-<<<<<<< HEAD
-set softtabstop=4
-set shiftwidth=4
-=======
 set softtabstop=2
 set shiftwidth=2
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 set expandtab
 
 " indent method
@@ -117,11 +99,7 @@ set smartindent
 " set selection=exclusive
 " set selectmode=mouse,key
 
-<<<<<<< HEAD
-set history=1000 "设置历史记录条数
-=======
 set history=9000 "设置历史记录条数
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " close welcome page
 set shortmess=atI
 set clipboard+=unnamed
@@ -129,7 +107,6 @@ set clipboard+=unnamed
 " VIM Encoding Method
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin1
-set fileencoding=gb2312
 set termencoding=utf-8
 
 set signcolumn=yes
@@ -155,25 +132,27 @@ set wrap
 " +================================ colorscheme =====================================+ "
 set t_Co=256
 set termguicolors
-set background=dark
 hi ExtraWhitespace ctermbg=red guibg=red
 hi Todo ctermbg=red guibg=red
 " let g:gruvbox_contrast_dark='hard'
 " let g:gruvbox_contrast_light='hard'
-" colorscheme gruvbox
-let g:airline_theme = 'gruvbox_material'
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
+" let g:airline_theme = 'gruvbox_material'
+" set background=dark
+" let g:gruvbox_material_background = 'hard'
+" colorscheme gruvbox-material
 
-<<<<<<< HEAD
-
-=======
 hi Normal ctermfg=252 ctermbg=none "背景透明
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+colorscheme onehalflight
+" colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+set background=light
+
+
 
 let g:python_highlight_all = 1
 " +================================ 可视化缩进 =====================================+ "
@@ -185,12 +164,9 @@ au FileType json let g:indentLine_setConceal = 0 " set default conceal for json
 
 " +================================== NERDTree =======================================+ "
 " autocmd vimenter * NERDTree  "自动开启Nerdtree
-<<<<<<< HEAD
-=======
 let NERDChristmasTree=1
 let NERDTreeWinSize=50
 let NERDTreeChDirMode=2
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 let g:NERDTreeWinSize = 35 "设定 NERDTree 视窗大小
 let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 "打开vim时如果没有文件自动打开NERDTree
@@ -202,32 +178,62 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " 设置树的显示图标
 " let g:NERDTreeDirArrowExpandable = '+'
 " let g:NERDTreeDirArrowCollapsible = '-'
-<<<<<<< HEAD
-let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
-=======
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']  " 过滤所有.pyc文件不显示
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 let g:NERDTreeShowLineNumbers=0 " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
 ""Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-<<<<<<< HEAD
-=======
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:Turquoise = "40E0D0"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = "FE405F"
+let s:git_orange = "F54D27"
+let s:gray = "808A87"
+let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExtensionHighlightColor['o'] = s:gray " sets the color of o files to blue
+let g:NERDTreeExtensionHighlightColor['h'] = s:blue " sets the color of h files to blue
+let g:NERDTreeExtensionHighlightColor['hpp'] = s:blue " sets the color of h files to blue
+let g:NERDTreeExtensionHighlightColor['c'] = s:green " sets the color of c files to blue
+let g:NERDTreeExtensionHighlightColor['cpp'] = s:green " sets the color of cpp files to blue
+let g:NERDTreeExtensionHighlightColor['cc'] = s:green " sets the color of cpp files to blue
+let g:NERDTreeExtensionHighlightColor['c++'] = s:green
+let g:NERDTreeGitStatusShowIgnore = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "�7�5",
-    \ "Staged"    : "�7�4",
-    \ "Untracked" : "�7�3",
-    \ "Renamed"   : "�7�4",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "�7�0",
-    \ "Dirty"     : "�7�1",
-    \ "Clean"     : "�7�8�1�4",
-    \ "Unknown"   : "?"
-    \ }
-
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
-" autocmd vimenter *  NERDTreeToggle
+	\ "Modified"  : "✹",
+	\ "Staged"    : "✚",
+	\ "Untracked" : "✭",
+	\ "Renamed"   : "➜",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "✖",
+	\ "Dirty"     : "✗",
+	\ "Clean"     : "✔︎",
+	\ 'Ignored'   : '☒',
+	\ "Unknown"   : "?"
+	\ }
 
 " +================================== 按键映射 =======================================+ "
 " self key map:
@@ -243,6 +249,7 @@ nnoremap <leader>df :set foldmethod=indent<CR>
 " enable and disable mouse support
 nnoremap <leader>sa :set mouse=a<CR>
 nnoremap <leader>da :set mouse=<CR>
+set mouse=a
 
 " match and undo trailing
 nnoremap <leader>st :match ExtraWhitespace /\s\+$/<CR>/\s\+$/<CR>
@@ -250,26 +257,15 @@ nnoremap <leader>dt :match<CR>:noh<CR>
 " close highlight
 nnoremap <leader>dh :noh<CR>
 
-<<<<<<< HEAD
-inoremap <silent> jj <Esc>
-=======
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 inoremap <M-h> <left>
 inoremap <M-j> <down>
 inoremap <M-k> <up>
 inoremap <M-l> <right>
 
 " swap
-<<<<<<< HEAD
-vnoremap <C-C> <ESC>`.``gvp``P
-
-" plug key map
-nnoremap <silent> <F4> :TagbarToggle<CR>  " tagbar
-=======
 " vnoremap <C-C> <ESC>`.``gvp``P
 
 " plug key map
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 nnoremap ff :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR> " nerdtree
 
 
@@ -287,11 +283,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-<<<<<<< HEAD
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-z> coc#refresh()
-=======
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -375,24 +366,18 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 if $CONDA_PREFIX == ""
   let s:current_python_path=$CONDA_PYTHON_EXE
 else
-  let s:current_python_path=$CONDA_PREFIX.'/bin/python'
+  let s:current_python_path=$CONDA_PREFIX.'/bin'
 endif
 call coc#config('python', {'pythonPath': s:current_python_path})
-<<<<<<< HEAD
-" +=================================== tagbar =======================================+ "
-
-=======
 
 " +=================================== tagbar =======================================+ "
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
 let g:tagbar_ctags_bin = 'ctags'                       "tagbar以来ctags插件
 let g:tagbar_left = 0                                          "让tagbar在页面左侧显示，默认右边
-let g:tagbar_width = 50                                     "设置tagbar的宽度为30列，默认40
+let g:tagbar_width = 40                                     "设置tagbar的宽度为30列，默认40
 let g:tagbar_autofocus = 1                                "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
 let g:tagbar_sort = 0                                         "设置标签不排序，默认排序
 nmap <F7> :TagbarToggle<CR>
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
-let g:tagbar_width=30
 " +================================== airline =======================================+ "
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -470,8 +455,6 @@ let g:NERDToggleCheckAllLines = 1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
-<<<<<<< HEAD
-=======
 
 map cc <leader>c<space>
 "切换所选行的注释状态。如果最上面的一行被注释，所有被选中的行都会被取消注释，反之亦然。
@@ -568,5 +551,21 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
+" vim-instant_markdown
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"Uncomment to override defaults:
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_mermaid = 1
+"let g:instant_markdown_autoscroll = 0
+let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+map <F6> :InstantMarkdownPreview<CR>
 
->>>>>>> 700b434e4c4350aa764a7b64c0e44db9935482e9
+
+
+
