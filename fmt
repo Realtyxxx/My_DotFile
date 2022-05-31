@@ -1,0 +1,5 @@
+find . -name '*.cpp' -type f -print -exec clang-format -i {} \;
+find . -name "*.cc" -type f -print -exec clang-format -i {} \;
+find . -name "*.hpp" -type f -print -exec clang-format -i {} \;
+find . -name "*.h" -type f -print -exec clang-format -i {} \;
+

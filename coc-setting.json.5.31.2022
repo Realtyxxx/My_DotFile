@@ -1,0 +1,65 @@
+{
+  "sh.enable": true,
+  "clangd.semantichighlighting": true,
+  "clangd.fallbackFlags": [
+   "-std=c++17"
+  ],
+  "clangd.enabled": true,
+  "clangd.path": "clangd",
+  "diagnostic-languageserver.filetypes": {
+    "python": "pylint"
+  },
+  "diagnostic-languageserver.linters": {
+    "formatpattern": [
+      "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
+      {
+        "line": 1,
+        "column": 2,
+        "security": 3,
+        "message": 4
+      }
+    ],
+    "rootpatterns": [
+      ".git",
+      "pyproject.toml",
+      "setup.py"
+    ],
+    "securities": {
+      "informational": "hint",
+      "refactor": "info",
+      "convention": "info",
+      "warning": "warning",
+      "error": "error",
+      "fatal": "error"
+    },
+    "offsetcolumn": 1,
+    "formatlines": 1
+  },
+  "diagnostic.warningsign": "!!",
+  "languageserver": {
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": [
+        "cmake"
+      ],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
+    }
+  }
+}
